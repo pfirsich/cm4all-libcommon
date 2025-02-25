@@ -782,6 +782,19 @@ public:
 		}
 
 		template<typename S, typename T>
+		auto BindMount(S &&source, T &&target, bool write, bool execute) noexcept {
+			if (!write && !execute) {
+				BindMount(source, target);
+			} else if (write && !execute) {
+				BindMountRw(source, target);
+			} else if (!write && execute) {
+				BindMountExec(source, target);
+			} else if (write && execute) {
+				BindMountRwExec(source, target);
+			}
+		}
+
+		template<typename S, typename T>
 		auto BindMount(S &&source, T &&target) noexcept {
 			response.StringPacket(TranslationCommand::BIND_MOUNT,
 					      std::forward<S>(source),
