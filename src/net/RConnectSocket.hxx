@@ -24,6 +24,11 @@ ResolveConnectSocket(const char *host_and_port, int default_port,
 		     std::chrono::duration<int, std::milli> timeout=std::chrono::seconds(60));
 
 UniqueSocketDescriptor
+ResolveConnectSocket(const char *host_and_port, int default_port,
+		     int socktype,
+		     std::chrono::duration<int, std::milli> timeout=std::chrono::seconds(60));
+
+UniqueSocketDescriptor
 ResolveConnectStreamSocket(const char *host_and_port, int default_port,
 			   std::chrono::duration<int, std::milli> timeout=std::chrono::seconds(60));
 

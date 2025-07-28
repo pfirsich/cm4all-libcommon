@@ -64,7 +64,7 @@ ParseConnectSocket(const char *host_and_port, int default_port,
 	return s;
 }
 
-static UniqueSocketDescriptor
+UniqueSocketDescriptor
 ResolveConnectSocket(const char *host_and_port, int default_port,
 		     int socktype,
 		     std::chrono::duration<int, std::milli> timeout)
